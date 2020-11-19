@@ -148,5 +148,10 @@ namespace Capstone.Controllers
                 return View();
             }
         }
+        //public async Task<IActionResult> Location(int id)
+        //{
+        //    var customer = await _db.Customer.FindAsync(id); 
+        //    var locations = _db.Location.Where(w => w.)
+        //}
     }
 }
