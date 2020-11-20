@@ -10,8 +10,12 @@ namespace Capstone.Models
     {
       
         [Key]
-        [Display(Name = "Spot ID")]
         public int ID { get; set; }
+        [Display(Name = "First Name")]
+        public int FirstName { get; set; }
+        [Display(Name = "Last Name")]
+        public int LastName { get; set; }
+        [Display(Name = "Address")]
         public string Address { get; set; }
         [Display(Name = "City")]
         public string City { get; set; }

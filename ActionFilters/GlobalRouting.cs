@@ -20,10 +20,10 @@ namespace Capstone.ActionFilters
 
             var controller = context.RouteData.Values["controller"];
             if (controller.Equals("Home"))
-                if (_claimsPrincipal.IsInRole("Customer"))
+                if (_claimsPrincipal.IsInRole("Neighbor"))
                 {
 
-                    context.Result = new RedirectToActionResult("Index", "Customer", null);
+                    context.Result = new RedirectToActionResult("Index", "Neighbor", null);
                 }
                 else if (_claimsPrincipal.IsInRole("Employee"))
                 {

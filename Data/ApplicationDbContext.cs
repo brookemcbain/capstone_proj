@@ -10,7 +10,7 @@ namespace Capstone.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Neighbor> Neighbors { get; set; }
         public DbSet<Location> Location { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -19,19 +19,22 @@ namespace Capstone.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
             builder.Entity<IdentityRole>()
-            .HasData(
-            new IdentityRole
-            {
-                Name = "Customer",
-                NormalizedName = "CUSTOMER"
-            },
-            new IdentityRole
-            {
-                Name = "Employee",
-                NormalizedName = "EMPLOYEE"
-            }
-            );
+                .HasData(
+                    new IdentityRole
+                    {
+                   
+                        Name = "Neighbor",
+                        NormalizedName = "NEIGHBOR"
+                    },
+                    new IdentityRole
+                    {
+                      
+                        Name = "Employee",
+                        NormalizedName = "EMPLOYEE"
+                    }
+                  );
         }
 
     }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Capstone.Data.Migrations
+namespace Capstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,46 @@ namespace Capstone.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Capstone.Customer", b =>
+            modelBuilder.Entity("Capstone.Models.Location", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FirstName")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LastName")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("OwnerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Location");
+                });
+
+            modelBuilder.Entity("Capstone.Neighbor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -27,6 +66,9 @@ namespace Capstone.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Community")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailAddress")
@@ -65,40 +107,7 @@ namespace Capstone.Data.Migrations
 
                     b.HasIndex("LocationID");
 
-                    b.ToTable("Customer");
-                });
-
-            modelBuilder.Entity("Capstone.Models.Location", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Latitude")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Longitude")
-                        .HasColumnType("float");
-
-                    b.Property<int?>("OwnerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Location");
+                    b.ToTable("Neighbors");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -130,15 +139,15 @@ namespace Capstone.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "eb9405dc-0de1-4c4e-a4b4-50c8ab89dae9",
-                            ConcurrencyStamp = "8e725cd6-67fe-41b9-9772-f6237d7d0e0b",
-                            Name = "Customer",
-                            NormalizedName = "CUSTOMER"
+                            Id = "ee6c7e27-e374-437b-8f72-0a954a9bb434",
+                            ConcurrencyStamp = "3638a02d-0248-4913-b5d4-f781ee72839e",
+                            Name = "Neighbor",
+                            NormalizedName = "NEIGHBOR"
                         },
                         new
                         {
-                            Id = "256265ac-33a3-4093-ae29-d4f3391dd0a9",
-                            ConcurrencyStamp = "1990dcd6-3083-4478-a261-6f6938d20b7a",
+                            Id = "070e7b4b-dfa2-47f5-b989-2c363d7a4f7b",
+                            ConcurrencyStamp = "d8416c98-6e68-4308-80f8-72320dc02544",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -313,7 +322,7 @@ namespace Capstone.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Capstone.Customer", b =>
+            modelBuilder.Entity("Capstone.Neighbor", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()

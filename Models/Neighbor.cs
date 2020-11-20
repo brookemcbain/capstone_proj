@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Capstone
 {
-    public class Customer
+    public class Neighbor
     {
         [Key]
         public int Id { get; set; }
@@ -30,6 +30,8 @@ namespace Capstone
         public string State { get; set; }
         [Display(Name = "Zip Code:")]
         public string ZipCode { get; set; }
+        [Display(Name = "Which Milwaukee Community Are You A Part Of? ")]
+        public string Community { get; set; }
 
 
         [ForeignKey("IdentityUser")]
@@ -37,6 +39,7 @@ namespace Capstone
         public IdentityUser IdentityUser { get; set; }
 
         [ForeignKey("SpotID")]
+        [Display(Name = "Location")]
         public int? SpotID { get; set; }
         public Location Location { get; set; }
     }

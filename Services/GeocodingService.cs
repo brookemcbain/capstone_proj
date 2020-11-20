@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using Capstone.Models;
 using Newtonsoft.Json.Linq;
 
+
 namespace Capstone.Services
 {
-    public class GeocodingService
+    public class GeocodingService : IGeoCodingService
     {
         public async Task<Location> AttachLatAndLong(Location location)
         {

@@ -100,17 +100,7 @@ namespace Capstone.Areas.Identity.Pages.Account
 
                     await _signInManager.SignInAsync(user, isPersistent: false); //sign in the user immediately
 
-                    //redirect to customer create profile if role is customer
-                    if (Input.Role == "Customer")
-                    {
-                        return RedirectToAction("Create", "Customer", null);
-
-                    }
-                    else if (Input.Role == "Employee")
-                    {
-                        return RedirectToAction("Index", "Employees", null);
-                    }
-
+ 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
