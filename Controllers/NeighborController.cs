@@ -149,10 +149,13 @@ namespace Capstone.Controllers
         }
         public async Task<IActionResult> Location(int id)
         {
+            //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var neighbor = _.Location.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+           
             var neighbor = await _db.Neighbors.FindAsync(id);
             var location = _db.Location.Where(w => w.OwnerId == neighbor.Id);
 
-            if (location.Any() == false)
+            if (location == null)
             {
                 return RedirectToAction(nameof(Index));
             }
