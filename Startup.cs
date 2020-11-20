@@ -50,7 +50,12 @@ namespace Capstone
             services.AddRazorPages();
 
             services.AddTransient<IGeoCodingService, GeocodingService>();
+
+            services.AddTransient<IEmailService, EmailService>();
+            services.AddControllersWithViews(); 
+
         }
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
