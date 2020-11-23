@@ -8,17 +8,19 @@ using Microsoft.AspNetCore.Mvc;
 using Capstone.Models;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Capstone.Controllers
 {
     public class ForumController : Controller
     {
+
         private readonly ApplicationDbContext _db;
 
         // GET: DiscussionForum
         public ForumController(ApplicationDbContext db)
         {
-            _db = db; 
+            _db = db;
         }
         public IActionResult Index()
         {
@@ -37,7 +39,7 @@ namespace Capstone.Controllers
 
         }
 
-        // GET: DiscussionForum/Details/5
+        //GET: DiscussionForum/Details/5
         public ActionResult Details(int id)
         {
             return View();
@@ -52,20 +54,18 @@ namespace Capstone.Controllers
         // POST: DiscussionForum/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Post post)
+        public async Task<IActionResult> Create([Bind("Title,Message")] Post post)
         {
-            try
+            if (ModelState.IsValid)
             {
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 post.IdentityUserId = userId;
                 _db.Posts.Add(post);
-                _db.SaveChanges(); 
+                await _db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            ViewData["IdentityUserId"] = new SelectList(_db.Users, "Id", "Id", post.IdentityUserId);
+            return View(post); 
         }
 
         // GET: DiscussionForum/Edit/5
