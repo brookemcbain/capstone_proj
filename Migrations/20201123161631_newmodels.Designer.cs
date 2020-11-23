@@ -4,20 +4,52 @@ using Capstone.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Capstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201123161631_newmodels")]
+    partial class newmodels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Capstone.Models.Forum", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reply")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Forums");
+                });
 
             modelBuilder.Entity("Capstone.Models.Location", b =>
                 {
@@ -65,49 +97,56 @@ namespace Capstone.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("IdentityUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ReplyId")
+                    b.Property<int?>("ForumId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("IdentityUserId");
+                    b.HasIndex("ForumId");
 
-                    b.HasIndex("ReplyId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("Capstone.Models.Reply", b =>
+            modelBuilder.Entity("Capstone.Models.PostReply", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Replies");
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PostReplies");
                 });
 
             modelBuilder.Entity("Capstone.Neighbor", b =>
@@ -144,9 +183,6 @@ namespace Capstone.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PostId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("SpotID")
                         .HasColumnType("int");
 
@@ -161,8 +197,6 @@ namespace Capstone.Migrations
                     b.HasIndex("IdentityUserId");
 
                     b.HasIndex("LocationID");
-
-                    b.HasIndex("PostId");
 
                     b.ToTable("Neighbors");
                 });
@@ -196,15 +230,15 @@ namespace Capstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9936d1e5-9786-46b2-88c3-221fc13a040c",
-                            ConcurrencyStamp = "ef11820d-bd82-4357-b244-4a44a3752fcd",
+                            Id = "d72b88db-a5e7-4978-b454-ad83e6d37ed0",
+                            ConcurrencyStamp = "972e1728-94b0-4192-938a-1c53f1a1b8b6",
                             Name = "Neighbor",
                             NormalizedName = "NEIGHBOR"
                         },
                         new
                         {
-                            Id = "97159c5b-1a7c-4ad6-86ce-6fdc0cd89cdf",
-                            ConcurrencyStamp = "2c30056c-e7e2-4f9c-b354-0f8fac553a6c",
+                            Id = "83006e6b-5c14-40aa-814f-afb3b74905bc",
+                            ConcurrencyStamp = "a65e3335-ecb5-4c72-8a5e-92cd90d85cea",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -244,6 +278,10 @@ namespace Capstone.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -297,6 +335,8 @@ namespace Capstone.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -379,15 +419,33 @@ namespace Capstone.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Capstone.Models.ApplicationUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
             modelBuilder.Entity("Capstone.Models.Post", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
-                        .WithMany()
-                        .HasForeignKey("IdentityUserId");
+                    b.HasOne("Capstone.Models.Forum", "Forum")
+                        .WithMany("Posts")
+                        .HasForeignKey("ForumId");
 
-                    b.HasOne("Capstone.Models.Reply", "reply")
+                    b.HasOne("Capstone.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("ReplyId");
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Capstone.Models.PostReply", b =>
+                {
+                    b.HasOne("Capstone.Models.Post", "Post")
+                        .WithMany("Replies")
+                        .HasForeignKey("PostId");
+
+                    b.HasOne("Capstone.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Capstone.Neighbor", b =>
@@ -399,10 +457,6 @@ namespace Capstone.Migrations
                     b.HasOne("Capstone.Models.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationID");
-
-                    b.HasOne("Capstone.Models.Post", "PostMessage")
-                        .WithMany()
-                        .HasForeignKey("PostId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

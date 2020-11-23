@@ -15,7 +15,8 @@ using Microsoft.Extensions.Hosting;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Capstone.ActionFilters;
-using Capstone.Services; 
+using Capstone.Services;
+using Microsoft.AspNet.SignalR.WebSockets;
 
 namespace Capstone
 {
@@ -47,7 +48,7 @@ namespace Capstone
             });
 
             services.AddControllersWithViews();
-            services.AddRazorPages();
+            services.AddRazorPages(); 
 
             services.AddTransient<IGeoCodingService, GeocodingService>();
 

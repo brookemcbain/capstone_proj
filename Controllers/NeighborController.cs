@@ -42,7 +42,7 @@ namespace Capstone.Controllers
                 .Include(c => c.IdentityUser)
                 .Include(c => c.Location)
                 .FirstOrDefaultAsync(m => m.Id == neighbor.Id);
-
+             
             return View(neighbor);
 
         }

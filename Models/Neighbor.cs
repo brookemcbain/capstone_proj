@@ -42,5 +42,9 @@ namespace Capstone
         [Display(Name = "Location")]
         public int? SpotID { get; set; }
         public Location Location { get; set; }
+        
+        [ForeignKey("Post")]
+        public int? PostId { get; set; }
+        public Post PostMessage { get; set; }
     }
 }

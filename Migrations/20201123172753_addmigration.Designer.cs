@@ -4,14 +4,16 @@ using Capstone.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Capstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201123172753_addmigration")]
+    partial class addmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,9 +70,6 @@ namespace Capstone.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("IdentityUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
@@ -84,8 +83,6 @@ namespace Capstone.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IdentityUserId");
 
                     b.HasIndex("ReplyId");
 
@@ -196,15 +193,15 @@ namespace Capstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9936d1e5-9786-46b2-88c3-221fc13a040c",
-                            ConcurrencyStamp = "ef11820d-bd82-4357-b244-4a44a3752fcd",
+                            Id = "ddac9366-e2bf-4d41-a316-5df7387e29b9",
+                            ConcurrencyStamp = "85b61d3c-cee4-453e-af14-fb9f30e33c06",
                             Name = "Neighbor",
                             NormalizedName = "NEIGHBOR"
                         },
                         new
                         {
-                            Id = "97159c5b-1a7c-4ad6-86ce-6fdc0cd89cdf",
-                            ConcurrencyStamp = "2c30056c-e7e2-4f9c-b354-0f8fac553a6c",
+                            Id = "30b1a7e4-2f78-41ab-ad5b-538e83a522d9",
+                            ConcurrencyStamp = "09f14d64-4117-4b40-b14e-bb17cfe349d1",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -381,10 +378,6 @@ namespace Capstone.Migrations
 
             modelBuilder.Entity("Capstone.Models.Post", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
-                        .WithMany()
-                        .HasForeignKey("IdentityUserId");
-
                     b.HasOne("Capstone.Models.Reply", "reply")
                         .WithMany()
                         .HasForeignKey("ReplyId");

@@ -2,17 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Capstone.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Capstone.Models;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Capstone.Controllers
 {
-    public class DiscussionForum : Controller
+    public class ForumController : Controller
     {
+        private readonly ApplicationDbContext _db;
+
         // GET: DiscussionForum
-        public ActionResult Index()
+        public ForumController(ApplicationDbContext db)
         {
-            return View();
+            _db = db; 
+        }
+        public IActionResult Index()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var neighbor = _db.Posts.Where(m => m.IdentityUserId == userId);
+            if (neighbor == null)
+            {
+                return RedirectToAction(nameof(Create));
+            }
+
+            else
+            {
+                return View(neighbor);
+            }
+
+
         }
 
         // GET: DiscussionForum/Details/5
@@ -30,10 +52,14 @@ namespace Capstone.Controllers
         // POST: DiscussionForum/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Post post)
         {
             try
             {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                post.IdentityUserId = userId;
+                _db.Posts.Add(post);
+                _db.SaveChanges(); 
                 return RedirectToAction(nameof(Index));
             }
             catch
