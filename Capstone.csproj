@@ -6,11 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20201119233943_initial.cs" />
-    <Compile Remove="Migrations\20201119233943_initial.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Views\Shared\Milwaukee.jpg" />
   </ItemGroup>
 

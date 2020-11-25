@@ -87,27 +87,7 @@ namespace Capstone.Migrations
 
                     b.HasIndex("IdentityUserId");
 
-                    b.HasIndex("ReplyId");
-
                     b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("Capstone.Models.Reply", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Replies");
                 });
 
             modelBuilder.Entity("Capstone.Neighbor", b =>
@@ -196,15 +176,15 @@ namespace Capstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9936d1e5-9786-46b2-88c3-221fc13a040c",
-                            ConcurrencyStamp = "ef11820d-bd82-4357-b244-4a44a3752fcd",
+                            Id = "101e09f2-9507-4d67-be77-02ab8daf90d7",
+                            ConcurrencyStamp = "6a723c73-2f39-42e9-a672-95276442ac47",
                             Name = "Neighbor",
                             NormalizedName = "NEIGHBOR"
                         },
                         new
                         {
-                            Id = "97159c5b-1a7c-4ad6-86ce-6fdc0cd89cdf",
-                            ConcurrencyStamp = "2c30056c-e7e2-4f9c-b354-0f8fac553a6c",
+                            Id = "6af63957-d480-45fb-8d4b-a82146061109",
+                            ConcurrencyStamp = "c2248d34-f9ad-4cba-b583-96487e9dcda2",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -384,10 +364,6 @@ namespace Capstone.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
                         .HasForeignKey("IdentityUserId");
-
-                    b.HasOne("Capstone.Models.Reply", "reply")
-                        .WithMany()
-                        .HasForeignKey("ReplyId");
                 });
 
             modelBuilder.Entity("Capstone.Neighbor", b =>

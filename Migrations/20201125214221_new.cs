@@ -174,6 +174,30 @@ namespace Capstone.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Posts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(nullable: true),
+                    Message = table.Column<string>(nullable: true),
+                    Created = table.Column<DateTime>(nullable: false),
+                    PostId = table.Column<int>(nullable: true),
+                    ReplyId = table.Column<int>(nullable: true),
+                    IdentityUserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Posts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Posts_AspNetUsers_IdentityUserId",
+                        column: x => x.IdentityUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Neighbors",
                 columns: table => new
                 {
@@ -190,7 +214,8 @@ namespace Capstone.Migrations
                     Community = table.Column<string>(nullable: true),
                     IdentityUserId = table.Column<string>(nullable: true),
                     SpotID = table.Column<int>(nullable: true),
-                    LocationID = table.Column<int>(nullable: true)
+                    LocationID = table.Column<int>(nullable: true),
+                    PostId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -207,17 +232,23 @@ namespace Capstone.Migrations
                         principalTable: "Location",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Neighbors_Posts_PostId",
+                        column: x => x.PostId,
+                        principalTable: "Posts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "ee6c7e27-e374-437b-8f72-0a954a9bb434", "3638a02d-0248-4913-b5d4-f781ee72839e", "Neighbor", "NEIGHBOR" });
+                values: new object[] { "101e09f2-9507-4d67-be77-02ab8daf90d7", "6a723c73-2f39-42e9-a672-95276442ac47", "Neighbor", "NEIGHBOR" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "070e7b4b-dfa2-47f5-b989-2c363d7a4f7b", "d8416c98-6e68-4308-80f8-72320dc02544", "Employee", "EMPLOYEE" });
+                values: new object[] { "6af63957-d480-45fb-8d4b-a82146061109", "c2248d34-f9ad-4cba-b583-96487e9dcda2", "Employee", "EMPLOYEE" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -267,6 +298,16 @@ namespace Capstone.Migrations
                 name: "IX_Neighbors_LocationID",
                 table: "Neighbors",
                 column: "LocationID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Neighbors_PostId",
+                table: "Neighbors",
+                column: "PostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Posts_IdentityUserId",
+                table: "Posts",
+                column: "IdentityUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -293,10 +334,13 @@ namespace Capstone.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Location");
 
             migrationBuilder.DropTable(
-                name: "Location");
+                name: "Posts");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }

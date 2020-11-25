@@ -16,8 +16,7 @@ namespace Capstone.Models
         public int? PostId { get; set; }
         [ForeignKey("ReplyId")]
         public int? ReplyId { get; set; }
-        public Reply reply { get; set; }
-
+     
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }

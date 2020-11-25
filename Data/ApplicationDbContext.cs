@@ -13,7 +13,7 @@ namespace Capstone.Data
         public DbSet<Neighbor> Neighbors { get; set; }
         public DbSet<Location> Location { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Reply> Replies { get; set; }     
+  
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

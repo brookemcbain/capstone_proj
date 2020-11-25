@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Capstone.Data.Migrations
+namespace Capstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201119144145_newmigration")]
-    partial class newmigration
+    [Migration("20201125214221_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,6 +60,38 @@ namespace Capstone.Data.Migrations
                     b.ToTable("Location");
                 });
 
+            modelBuilder.Entity("Capstone.Models.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ReplyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdentityUserId");
+
+                    b.ToTable("Posts");
+                });
+
             modelBuilder.Entity("Capstone.Neighbor", b =>
                 {
                     b.Property<int>("Id")
@@ -94,6 +126,9 @@ namespace Capstone.Data.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("SpotID")
                         .HasColumnType("int");
 
@@ -108,6 +143,8 @@ namespace Capstone.Data.Migrations
                     b.HasIndex("IdentityUserId");
 
                     b.HasIndex("LocationID");
+
+                    b.HasIndex("PostId");
 
                     b.ToTable("Neighbors");
                 });
@@ -141,15 +178,15 @@ namespace Capstone.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4426b53e-9a09-410c-bf2e-3eb255b7716e",
-                            ConcurrencyStamp = "7453b315-19b2-45c5-a9fd-553a6f2d536d",
-                            Name = "Customer",
-                            NormalizedName = "CUSTOMER"
+                            Id = "101e09f2-9507-4d67-be77-02ab8daf90d7",
+                            ConcurrencyStamp = "6a723c73-2f39-42e9-a672-95276442ac47",
+                            Name = "Neighbor",
+                            NormalizedName = "NEIGHBOR"
                         },
                         new
                         {
-                            Id = "681690b8-9535-40d6-8d2a-22d204922e23",
-                            ConcurrencyStamp = "4242914e-838b-46bb-b749-55ab6fcedd92",
+                            Id = "6af63957-d480-45fb-8d4b-a82146061109",
+                            ConcurrencyStamp = "c2248d34-f9ad-4cba-b583-96487e9dcda2",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -324,6 +361,13 @@ namespace Capstone.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Capstone.Models.Post", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
+                });
+
             modelBuilder.Entity("Capstone.Neighbor", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
@@ -333,6 +377,10 @@ namespace Capstone.Data.Migrations
                     b.HasOne("Capstone.Models.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationID");
+
+                    b.HasOne("Capstone.Models.Post", "PostMessage")
+                        .WithMany()
+                        .HasForeignKey("PostId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
