@@ -109,5 +109,40 @@ namespace Capstone.Controllers
                 return View();
             }
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Replies([Bind("Title,Message")] Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                post.IdentityUserId = userId;
+                _db.Posts.Add(post);
+                await _db.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["IdentityUserId"] = new SelectList(_db.Users, "Id", "Id", post.IdentityUserId);
+            return View(post);
+        }
+        public ActionResult EditReplies(int id)
+        {
+            return View();
+        }
+
+        // POST: DiscussionForum/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditReplies(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }
