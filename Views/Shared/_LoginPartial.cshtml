@@ -2,18 +2,18 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
+<ul class="navbar-nav mr-auto">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Forum" asp-action="Index">Neighborhood Watch</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources</a>
+            <div class="drowdown-menu">
+                <a class="dropdown-item" asp-area="" asp-controller="Forum" asp-action="Index">Neighborhood Watch</a>
+                <a class="dropdown-item" asp-area="" asp-controller="LostAndFound" asp-action="Index">Lost And Found</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Emergency" asp-action="Index">Emergency Resources</a>
+            </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="LostAndFound" asp-action="Index">Lost And Found</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Emergency" asp-action="Index">Emergency Resources</a>
-        </li>
+
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Location" asp-action="Index">Location</a>
         </li>

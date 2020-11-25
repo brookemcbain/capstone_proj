@@ -143,6 +143,12 @@ namespace Capstone.Controllers
                 return View();
             }
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult New()
+        {
+            return View(); 
+        }
 
     }
 }
