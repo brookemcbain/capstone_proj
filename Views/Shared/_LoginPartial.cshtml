@@ -2,18 +2,29 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav mr-auto">
+<ul class="navbar nav bg-light">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="nav-item dropdown">
+        @*<li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources</a>
             <div class="drowdown-menu">
                 <a class="dropdown-item" asp-area="" asp-controller="Forum" asp-action="Index">Neighborhood Watch</a>
                 <a class="dropdown-item" asp-area="" asp-controller="LostAndFound" asp-action="Index">Lost And Found</a>
                 <a class="dropdown-item" asp-area="" asp-controller="Emergency" asp-action="Index">Emergency Resources</a>
             </div>
-        </li>
-
+        </li>*@
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Resources
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-area="" asp-controller="Forum" asp-action="Index">Neighborhood Watch</a>
+                <a class="dropdown-item" asp-area="" asp-controller="LostAndFound" asp-action="Index">Lost And Found</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Emergency" asp-action="Index">Emergency Resources</a>
+                @*<div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>*@
+            </div>
+        </div>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Location" asp-action="Index">Location</a>
         </li>
