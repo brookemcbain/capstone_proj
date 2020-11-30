@@ -4,14 +4,16 @@ using Capstone.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Capstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201130154532_rolesnew")]
+    partial class rolesnew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,73 +210,66 @@ namespace Capstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6c5683e1-cdbb-469f-964b-d34569919480",
-                            ConcurrencyStamp = "a92fb410-ea56-4c6d-be13-9f6c7e2a0fd8",
+                            Id = "153e867a-302a-4d5f-80e1-4b8381a7b300",
+                            ConcurrencyStamp = "f6e2535d-fdd1-4d0e-ba58-c42b2c281061",
                             Name = "Lower East Side",
                             NormalizedName = "LOWER EAST SIDE"
                         },
                         new
                         {
-                            Id = "97aa893c-fd5e-4f38-ae49-994be9a51114",
-                            ConcurrencyStamp = "8b37de0c-3972-4130-8169-41b03818c771",
+                            Id = "ba9bcc96-e2c9-4c97-9621-4e059ad8bf9b",
+                            ConcurrencyStamp = "f9c636ec-74d2-4b17-84f8-94541e2c0426",
                             Name = "River West",
                             NormalizedName = "RIVER WEST"
                         },
                         new
                         {
-                            Id = "6311319b-fe14-4aaa-ab1d-f0f4f3096ea6",
-                            ConcurrencyStamp = "0765d517-69cb-4571-9053-7b3fa7ed9ee0",
+                            Id = "921a9834-aab1-4116-8e6c-c295866f2a55",
+                            ConcurrencyStamp = "02e9d7b4-5f2a-42d6-a087-40212cbfc8db",
                             Name = "Downtown",
                             NormalizedName = "DOWNTOWN"
                         },
                         new
                         {
-                            Id = "2828396a-bf18-4ed2-b272-cc0483ed4de6",
-                            ConcurrencyStamp = "8c753a75-bdd1-4a5e-be96-035b33f7a333",
+                            Id = "923b980f-52d0-4ee6-befb-1c71e23d0546",
+                            ConcurrencyStamp = "254347be-6d2f-4dbf-83cd-efa1db22d6b8",
                             Name = "Brewer's Hill",
                             NormalizedName = "BREWER'S HILL"
                         },
                         new
                         {
-                            Id = "b454c659-1920-4e84-9782-be6ffd79bed1",
-                            ConcurrencyStamp = "3292a810-01c3-4744-8d4b-c6e1eb1b57e0",
+                            Id = "f797de6a-b141-4813-958e-a89042bc3f22",
+                            ConcurrencyStamp = "afffa9a7-39d2-41ca-a30b-eef5e21ec806",
                             Name = "Franklin Heights",
                             NormalizedName = "FRANKLIN HEIGHTS"
                         },
                         new
                         {
-                            Id = "a01a6771-ddfb-4a0f-8b00-7d578177c50f",
-                            ConcurrencyStamp = "8f7b7655-99b4-45a0-b3d6-aa0098236fda",
+                            Id = "f82474e4-ec29-4f28-b943-947b10aaee1e",
+                            ConcurrencyStamp = "37e71229-69c7-467e-9316-569d2d3eb843",
                             Name = "Third Ward",
                             NormalizedName = "THIRD WARD"
                         },
                         new
                         {
-                            Id = "00e074ec-7351-4437-8db3-1e7c36df5c45",
-                            ConcurrencyStamp = "d08dceee-4832-445b-9d4c-4a855176508a",
+                            Id = "35d32bbd-ce3d-49b6-820b-912debf10f3f",
+                            ConcurrencyStamp = "0bd44927-86da-4b4f-aaeb-cf5b9d1d712e",
                             Name = "Walker's Point",
                             NormalizedName = "WALKER'S POINT"
                         },
                         new
                         {
-                            Id = "642b723c-b2d3-4056-a422-d70f0cb5fb48",
-                            ConcurrencyStamp = "03919c8b-6f43-4476-99cf-aa22a0dc0035",
+                            Id = "2fe15904-e2cb-458d-b701-ce245027de4b",
+                            ConcurrencyStamp = "7dfd6a8c-efff-49cb-aefb-78cad31df795",
                             Name = "Story Hill",
                             NormalizedName = "STORY HILL"
                         },
                         new
                         {
-                            Id = "d633e0fd-c503-4c02-8103-a85a6b0ea5cb",
-                            ConcurrencyStamp = "0fc55c2b-9586-4ff8-a2ae-a3246a80a7e7",
+                            Id = "559e4806-6a2f-48e2-b19a-b81782864a7d",
+                            ConcurrencyStamp = "f8920057-5af6-409f-bc41-fecc5d20ee6d",
                             Name = "Washington Heights",
                             NormalizedName = "WASHINGTON HEIGHTS"
-                        },
-                        new
-                        {
-                            Id = "16d6e7b8-6adc-422f-b6a9-7c08259e82be",
-                            ConcurrencyStamp = "939afeea-511b-416c-9be7-57d95913bf42",
-                            Name = "Bay View",
-                            NormalizedName = "BAY VIEW"
                         });
                 });
 

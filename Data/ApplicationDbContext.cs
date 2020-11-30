@@ -13,7 +13,8 @@ namespace Capstone.Data
         public DbSet<Neighbor> Neighbors { get; set; }
         public DbSet<Location> Location { get; set; }
         public DbSet<Post> Posts { get; set; }
-  
+        public DbSet<LostAndFound> LostAndFound { get; set; }
+
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -28,16 +29,64 @@ namespace Capstone.Data
                 .HasData(
                     new IdentityRole
                     {
-                   
-                        Name = "Neighbor",
-                        NormalizedName = "NEIGHBOR"
+                        Name = "Lower East Side",
+                        NormalizedName = "LOWER EAST SIDE"
                     },
                     new IdentityRole
                     {
-                      
-                        Name = "Employee",
-                        NormalizedName = "EMPLOYEE"
+
+                        Name = "River West",
+                        NormalizedName = "RIVER WEST"
+                    },
+                    new IdentityRole
+                    {
+
+                        Name = "Downtown",
+                        NormalizedName = "DOWNTOWN"
+                    },
+                    new IdentityRole
+                    {
+
+                        Name = "Brewer's Hill",
+                        NormalizedName = "BREWER'S HILL"
+                    },
+                    new IdentityRole
+                    {
+
+                        Name = "Franklin Heights",
+                        NormalizedName = "FRANKLIN HEIGHTS"
+                    },
+                    new IdentityRole
+                    {
+
+                        Name = "Third Ward",
+                        NormalizedName = "THIRD WARD"
+                    },
+                    new IdentityRole
+                    {
+
+                        Name = "Walker's Point",
+                        NormalizedName = "WALKER'S POINT"
+                    },
+                    new IdentityRole
+                    {
+
+                        Name = "Story Hill",
+                        NormalizedName = "STORY HILL"
+                    },
+                    new IdentityRole
+                    {
+
+                        Name = "Washington Heights",
+                        NormalizedName = "WASHINGTON HEIGHTS"
+                    },
+                    new IdentityRole
+                    {
+
+                        Name = "Bay View",
+                        NormalizedName = "BAY VIEW"
                     }
+
                   );
         }
 

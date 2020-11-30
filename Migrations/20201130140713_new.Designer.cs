@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Capstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201130004642_lostandfound")]
-    partial class lostandfound
+    [Migration("20201130140713_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,6 +58,38 @@ namespace Capstone.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Location");
+                });
+
+            modelBuilder.Entity("Capstone.Models.LostAndFound", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ReplyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdentityUserId");
+
+                    b.ToTable("LostAndFound");
                 });
 
             modelBuilder.Entity("Capstone.Models.Post", b =>
@@ -178,15 +210,15 @@ namespace Capstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "284580ae-4774-4e1c-a26d-b5022eeb2ac1",
-                            ConcurrencyStamp = "05480bd7-f4f4-4452-9509-72f938a6f96b",
+                            Id = "ecff7750-89d8-47dc-8092-1eb902ba4d21",
+                            ConcurrencyStamp = "55c4944d-d604-4e09-90ba-7f59dad03391",
                             Name = "Neighbor",
                             NormalizedName = "NEIGHBOR"
                         },
                         new
                         {
-                            Id = "4a10dc48-cc7c-4593-94d8-321cd8282cb5",
-                            ConcurrencyStamp = "4625c499-979b-4ee1-a1ed-6a9b25a97ce3",
+                            Id = "c32b1d63-3daa-4f6d-a5bc-6c57f4a6dbc6",
+                            ConcurrencyStamp = "a58fcbbe-d8ca-405e-909a-16505a89c552",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -359,6 +391,13 @@ namespace Capstone.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Capstone.Models.LostAndFound", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
                 });
 
             modelBuilder.Entity("Capstone.Models.Post", b =>

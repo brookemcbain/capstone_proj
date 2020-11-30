@@ -174,6 +174,30 @@ namespace Capstone.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "LostAndFound",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(nullable: true),
+                    Message = table.Column<string>(nullable: true),
+                    Created = table.Column<DateTime>(nullable: false),
+                    PostId = table.Column<int>(nullable: true),
+                    ReplyId = table.Column<int>(nullable: true),
+                    IdentityUserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LostAndFound", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LostAndFound_AspNetUsers_IdentityUserId",
+                        column: x => x.IdentityUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Posts",
                 columns: table => new
                 {
@@ -243,12 +267,12 @@ namespace Capstone.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "101e09f2-9507-4d67-be77-02ab8daf90d7", "6a723c73-2f39-42e9-a672-95276442ac47", "Neighbor", "NEIGHBOR" });
+                values: new object[] { "ecff7750-89d8-47dc-8092-1eb902ba4d21", "55c4944d-d604-4e09-90ba-7f59dad03391", "Neighbor", "NEIGHBOR" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "6af63957-d480-45fb-8d4b-a82146061109", "c2248d34-f9ad-4cba-b583-96487e9dcda2", "Employee", "EMPLOYEE" });
+                values: new object[] { "c32b1d63-3daa-4f6d-a5bc-6c57f4a6dbc6", "a58fcbbe-d8ca-405e-909a-16505a89c552", "Employee", "EMPLOYEE" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -290,6 +314,11 @@ namespace Capstone.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_LostAndFound_IdentityUserId",
+                table: "LostAndFound",
+                column: "IdentityUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Neighbors_IdentityUserId",
                 table: "Neighbors",
                 column: "IdentityUserId");
@@ -326,6 +355,9 @@ namespace Capstone.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "LostAndFound");
 
             migrationBuilder.DropTable(
                 name: "Neighbors");

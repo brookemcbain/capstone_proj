@@ -8,12 +8,12 @@
 }
 html,body{
     height: 100%;
-    color: blue; 
+    color: black; 
 }
 body{
     overflow: hidden; 
     overflow: hidden; 
-    background-color: blue; 
+    background-color: white; 
 }
 button{
     padding: 8px 16px; 

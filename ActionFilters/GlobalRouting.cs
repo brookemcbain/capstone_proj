@@ -20,14 +20,53 @@ namespace Capstone.ActionFilters
 
             var controller = context.RouteData.Values["controller"];
             if (controller.Equals("Home"))
-                if (_claimsPrincipal.IsInRole("Neighbor"))
+                if (_claimsPrincipal.IsInRole("Lower East Side"))
                 {
 
                     context.Result = new RedirectToActionResult("Index", "Neighbor", null);
                 }
-                else if (_claimsPrincipal.IsInRole("Employee"))
+                else if (_claimsPrincipal.IsInRole("River West"))
                 {
                     context.Result = new RedirectToActionResult("Index", "Employees", null);
+                }
+                else if (_claimsPrincipal.IsInRole("Downtown"))
+                {
+                    context.Result = new RedirectToActionResult("Index", "Employees", null);
+
+                }
+                else if (_claimsPrincipal.IsInRole("Brewer's Hill"))
+                {
+                    context.Result = new RedirectToActionResult("Index", "Employees", null);
+
+                }
+                else if (_claimsPrincipal.IsInRole("Franklin Heights"))
+                {
+                    context.Result = new RedirectToActionResult("Index", "Employees", null);
+
+                }
+                else if (_claimsPrincipal.IsInRole("Third Ward"))
+                {
+                    context.Result = new RedirectToActionResult("Index", "Employees", null);
+
+                }
+                else if (_claimsPrincipal.IsInRole("Walker's Point"))
+                {
+                    context.Result = new RedirectToActionResult("Index", "Employees", null);
+
+                }
+                else if (_claimsPrincipal.IsInRole("Story Hill"))
+                {
+                    context.Result = new RedirectToActionResult("Index", "Employees", null);
+
+                }
+                else if (_claimsPrincipal.IsInRole("Washington Heights"))
+                {
+                    context.Result = new RedirectToActionResult("Index", "Employees", null);
+
+                }
+                else if (_claimsPrincipal.IsInRole("Bay View"))
+                {
+                    context.Result = new RedirectToActionResult("Index", "Neighbor", null);
 
                 }
         }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Capstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201130132400_addtolostandfound")]
-    partial class addtolostandfound
+    [Migration("20201130154738_bayview")]
+    partial class bayview
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,6 +58,38 @@ namespace Capstone.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Location");
+                });
+
+            modelBuilder.Entity("Capstone.Models.LostAndFound", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ReplyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdentityUserId");
+
+                    b.ToTable("LostAndFound");
                 });
 
             modelBuilder.Entity("Capstone.Models.Post", b =>
@@ -178,17 +210,73 @@ namespace Capstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "06f94aa1-4d01-465b-ae84-c49a8c328ee6",
-                            ConcurrencyStamp = "b0a380f9-0f1a-4a90-a122-7250dd32941d",
-                            Name = "Neighbor",
-                            NormalizedName = "NEIGHBOR"
+                            Id = "6c5683e1-cdbb-469f-964b-d34569919480",
+                            ConcurrencyStamp = "a92fb410-ea56-4c6d-be13-9f6c7e2a0fd8",
+                            Name = "Lower East Side",
+                            NormalizedName = "LOWER EAST SIDE"
                         },
                         new
                         {
-                            Id = "4ba26779-fc18-4824-be62-aa0e94161d94",
-                            ConcurrencyStamp = "e8ef26a0-d9db-410f-bea8-24a48d5f3fd9",
-                            Name = "Employee",
-                            NormalizedName = "EMPLOYEE"
+                            Id = "97aa893c-fd5e-4f38-ae49-994be9a51114",
+                            ConcurrencyStamp = "8b37de0c-3972-4130-8169-41b03818c771",
+                            Name = "River West",
+                            NormalizedName = "RIVER WEST"
+                        },
+                        new
+                        {
+                            Id = "6311319b-fe14-4aaa-ab1d-f0f4f3096ea6",
+                            ConcurrencyStamp = "0765d517-69cb-4571-9053-7b3fa7ed9ee0",
+                            Name = "Downtown",
+                            NormalizedName = "DOWNTOWN"
+                        },
+                        new
+                        {
+                            Id = "2828396a-bf18-4ed2-b272-cc0483ed4de6",
+                            ConcurrencyStamp = "8c753a75-bdd1-4a5e-be96-035b33f7a333",
+                            Name = "Brewer's Hill",
+                            NormalizedName = "BREWER'S HILL"
+                        },
+                        new
+                        {
+                            Id = "b454c659-1920-4e84-9782-be6ffd79bed1",
+                            ConcurrencyStamp = "3292a810-01c3-4744-8d4b-c6e1eb1b57e0",
+                            Name = "Franklin Heights",
+                            NormalizedName = "FRANKLIN HEIGHTS"
+                        },
+                        new
+                        {
+                            Id = "a01a6771-ddfb-4a0f-8b00-7d578177c50f",
+                            ConcurrencyStamp = "8f7b7655-99b4-45a0-b3d6-aa0098236fda",
+                            Name = "Third Ward",
+                            NormalizedName = "THIRD WARD"
+                        },
+                        new
+                        {
+                            Id = "00e074ec-7351-4437-8db3-1e7c36df5c45",
+                            ConcurrencyStamp = "d08dceee-4832-445b-9d4c-4a855176508a",
+                            Name = "Walker's Point",
+                            NormalizedName = "WALKER'S POINT"
+                        },
+                        new
+                        {
+                            Id = "642b723c-b2d3-4056-a422-d70f0cb5fb48",
+                            ConcurrencyStamp = "03919c8b-6f43-4476-99cf-aa22a0dc0035",
+                            Name = "Story Hill",
+                            NormalizedName = "STORY HILL"
+                        },
+                        new
+                        {
+                            Id = "d633e0fd-c503-4c02-8103-a85a6b0ea5cb",
+                            ConcurrencyStamp = "0fc55c2b-9586-4ff8-a2ae-a3246a80a7e7",
+                            Name = "Washington Heights",
+                            NormalizedName = "WASHINGTON HEIGHTS"
+                        },
+                        new
+                        {
+                            Id = "16d6e7b8-6adc-422f-b6a9-7c08259e82be",
+                            ConcurrencyStamp = "939afeea-511b-416c-9be7-57d95913bf42",
+                            Name = "Bay View",
+                            NormalizedName = "BAY VIEW"
                         });
                 });
 
@@ -359,6 +447,13 @@ namespace Capstone.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Capstone.Models.LostAndFound", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
                 });
 
             modelBuilder.Entity("Capstone.Models.Post", b =>

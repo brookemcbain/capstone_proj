@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Capstone.Models.LostAndFound>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Index</title>
+</head>
+<body>
+    <table>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="tablerow" style="border: 6px double black; border-radius: 40px 40px 40px 40px; margin: 20px; ">
+                    <td>
+                        <b> Title: </b><br />
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        <b> Message: </b><br />
+                        @Html.DisplayFor(modelItem => item.Message)
+                    <td>
+                        <a asp-action="Reply">Reply</a>
+                    </td>
+                    <td style="font-style: italic; font-size: 10px; ">
+                        <b></b><br />
+                        @Html.DisplayFor(modelItem => item.Created)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+
+        <a asp-action="Create">Create A Post</a>
+    </div>
+</body>
+</html>
+<link rel="stylesheet" href="~/css/create.css" />
+
+
