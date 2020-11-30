@@ -4,14 +4,16 @@ using Capstone.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Capstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201130004642_lostandfound")]
+    partial class lostandfound
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,15 +178,15 @@ namespace Capstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "06f94aa1-4d01-465b-ae84-c49a8c328ee6",
-                            ConcurrencyStamp = "b0a380f9-0f1a-4a90-a122-7250dd32941d",
+                            Id = "284580ae-4774-4e1c-a26d-b5022eeb2ac1",
+                            ConcurrencyStamp = "05480bd7-f4f4-4452-9509-72f938a6f96b",
                             Name = "Neighbor",
                             NormalizedName = "NEIGHBOR"
                         },
                         new
                         {
-                            Id = "4ba26779-fc18-4824-be62-aa0e94161d94",
-                            ConcurrencyStamp = "e8ef26a0-d9db-410f-bea8-24a48d5f3fd9",
+                            Id = "4a10dc48-cc7c-4593-94d8-321cd8282cb5",
+                            ConcurrencyStamp = "4625c499-979b-4ee1-a1ed-6a9b25a97ce3",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });

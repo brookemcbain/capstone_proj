@@ -1,32 +1,31 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>@ViewData["Title"] - Capstone</title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/style.css" />
-
-
 </head>
+
 <body>
+    <img src="C:\Users\mcbai\OneDrive\Documents\Capstone-Community\Capstone\community.jpg" />
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-warning border-bottom box-shadow mb-3">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Community</a>
+        <nav style="border-bottom: solid;" class="navbar navbar-expand-sm navbar-toggleable-sm bg-light box-shadow mb-3">
+            <a style="color: black; font-size: 22px; font-weight: bold;" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Community</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="n"></span>
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                 <partial name="_LoginPartial" />
-             
+
             </div>
 
         </nav>
     </header>
-
+ 
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

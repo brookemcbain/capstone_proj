@@ -2,19 +2,19 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar nav bg-light">
+<ul style="border: none; color: white;" class="navbar nav bg-light">
     @if (SignInManager.IsSignedIn(User))
     {
         @*<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources</a>
-            <div class="drowdown-menu">
-                <a class="dropdown-item" asp-area="" asp-controller="Forum" asp-action="Index">Neighborhood Watch</a>
-                <a class="dropdown-item" asp-area="" asp-controller="LostAndFound" asp-action="Index">Lost And Found</a>
-                <a class="dropdown-item" asp-area="" asp-controller="Emergency" asp-action="Index">Emergency Resources</a>
-            </div>
-        </li>*@
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources</a>
+                <div class="drowdown-menu">
+                    <a class="dropdown-item" asp-area="" asp-controller="Forum" asp-action="Index">Neighborhood Watch</a>
+                    <a class="dropdown-item" asp-area="" asp-controller="LostAndFound" asp-action="Index">Lost And Found</a>
+                    <a class="dropdown-item" asp-area="" asp-controller="Emergency" asp-action="Index">Emergency Resources</a>
+                </div>
+            </li>*@
         <li class="btn-group">
-            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button style="color: white;" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Resources
             </button>
             <div class="dropdown-menu">
@@ -22,16 +22,44 @@
                 <a class="dropdown-item" asp-area="" asp-controller="LostAndFound" asp-action="Index">Lost And Found</a>
                 <a class="dropdown-item" asp-area="" asp-controller="Emergency" asp-action="Index">Emergency Resources</a>
                 @*<div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>*@
+                    <a class="dropdown-item" href="#">Separated link</a>*@
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Location" asp-action="Index">Location</a>
+        <li class="btn-group">
+            <button style="color: white;" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Where are your neighbors?
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-area="" asp-controller="Location" asp-action="Index">Location</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Location" asp-action="Create">Get On The Map</a>
+                @*<div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>*@
+            </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        <li class="btn-group">
+            <button style="color: white;" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Contact Us
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-area="" asp-controller="Email" asp-action="Index">Email Us</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Email" asp-action="Create">Other Contact Information</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Email" asp-action="About"></a>"
+                @*<div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>*@
+            </div>
         </li>
-        <li class="nav-item">
+        <li class="btn-group">
+            <button style="color: white;" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hello @User.Identity.Name!
+            </button>
+            <div class="dropdown-menu">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Neighbor" asp-action="Edit">Edit Your Information</a>
+                @*<div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>*@
+            </div>
+        </li>
+
+        <li class="btn btn-success ">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>
