@@ -24,19 +24,23 @@ namespace Capstone.Controllers
         }
         public IActionResult Index()
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var neighbor = _db.Posts.Where(m => m.IdentityUserId == userId);
-            if (neighbor == null)
+            var posts = _db.Posts; 
+            if(posts.Any() == false)
             {
-                return RedirectToAction(nameof(Create));
+                return RedirectToAction(nameof(Create)); 
             }
+            return View(posts); 
+            //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var neighbor = _db.Posts.Where(m => m.IdentityUserId == userId);
+            //if (neighbor == null)
+            //{
+            //    return RedirectToAction(nameof(Create));
+            //}
 
-            else
-            {
-                return View(neighbor);
-            }
-
-
+            //else
+            //{
+            //    return View(neighbor);
+            //}
         }
 
         //GET: DiscussionForum/Details/5
@@ -54,17 +58,17 @@ namespace Capstone.Controllers
         // POST: DiscussionForum/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Message")] Post post)
+        public async Task<IActionResult> Create([Bind("Title,Message,Created")] Post post)
         {
             if (ModelState.IsValid)
             {
-                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                post.IdentityUserId = userId;
+                //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                //post.IdentityUserId = userId;
                 _db.Posts.Add(post);
                 await _db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdentityUserId"] = new SelectList(_db.Users, "Id", "Id", post.IdentityUserId);
+            //ViewData["IdentityUserId"] = new SelectList(_db.Users, "Id", "Id", post.IdentityUserId);
             return View(post); 
         }
 

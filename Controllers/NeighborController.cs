@@ -28,6 +28,7 @@ namespace Capstone.Controllers
         }
 
         // GET: Neighbors
+        
         public async Task<IActionResult> Index()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -187,6 +188,10 @@ namespace Capstone.Controllers
             }
      
             return View(location);
+        }
+        public ActionResult Home()
+        {
+            return View(); 
         }
 
     }

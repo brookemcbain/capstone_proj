@@ -17,30 +17,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body>
-    <button>Show Alerts</button>
-    <div class="alert hide">
-        <span class="fas fa-exlamation-circle"></span>
-        <span class="msg">Hello! COMMUNITY ALERT MESSAGE: Have a great day! </span>
-        <span class="close-btn">
-            <span class="fas fa-times"></span>
-        </span>
-    </div>
-
-    <script>
-        $('button').click(function(){
-            $('.alert').removeClass("hide"); 
-            $('.alert').addClass("show"); 
-            $('.alert').addClass("showAlert"); 
-            setTimeout(function(){
-                $('.alert').addClass("hide"); 
-                $('.alert').removeClass("show"); 
-            },20000); //hide alert automatically after 5 seconds
-        }); 
-          $('.close-btn').click(function(){
-            $('.alert').addClass("hide"); 
-            $('.alert').removeClass("show"); 
-        }); 
-    </script>
+    
     <div>
         <h4>Customer</h4>
         <hr />

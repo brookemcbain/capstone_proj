@@ -24,17 +24,25 @@ namespace Capstone.Controllers
         }
         public IActionResult Index()
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var lostandfound = _db.LostAndFound.Where(m => m.IdentityUserId == userId);
-            if (lostandfound == null)
-            {
-                return RedirectToAction(nameof(Create));
-            }
+            var lostandfound = _db.LostAndFound; 
 
-            else
+            if (lostandfound.Any() == false)
             {
-                return View(lostandfound);
+                return RedirectToAction(nameof(Create)); 
             }
+            return View(lostandfound); 
+
+            //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var lostandfound = _db.LostAndFound.Where(m => m.IdentityUserId == userId);
+            //if (lostandfound == null)
+            //{
+            //    return RedirectToAction(nameof(Create));
+            //}
+
+            //else
+            //{
+            //    return View(lostandfound);
+            //}
         }
         //GET: DiscussionForum/Details/5
         public ActionResult EmergencyResources()
@@ -55,13 +63,14 @@ namespace Capstone.Controllers
         {
             if (ModelState.IsValid)
             {
-                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                lostandfound.IdentityUserId = userId;
+                //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                //lostandfound.IdentityUserId = userId;
                 _db.LostAndFound.Add(lostandfound);
                 await _db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdentityUserId"] = new SelectList(_db.Users, "Id", "Id", lostandfound.IdentityUserId);
+     
+            //ViewData["IdentityUserId"] = new SelectList(_db.Users, "Id", "Id", lostandfound.IdentityUserId);
             return View(lostandfound);
         }
 
