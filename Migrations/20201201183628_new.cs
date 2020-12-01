@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Capstone.Migrations
 {
-    public partial class newmigration : Migration
+    public partial class @new : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -269,16 +269,16 @@ namespace Capstone.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "17b01ae9-c307-4200-a7f2-48d854628e85", "bd9b3c04-8a0c-4505-a492-825861d3ccc8", "Lower East Side", "LOWER EAST SIDE" },
-                    { "5ef6cde0-e740-4ece-827a-026ad83e1949", "1f15a242-44c9-46fe-999d-ac0a5325a81e", "River West", "RIVER WEST" },
-                    { "934b6749-84aa-4363-9bd8-9076b69d75c8", "bc902d1a-8b91-44c1-9f1d-6c812457fdd7", "Downtown", "DOWNTOWN" },
-                    { "1aa0a2ed-cfca-46b2-82dc-ac97f0e118b0", "36921905-b526-41b4-9eef-fd8e07cc984f", "Brewer's Hill", "BREWER'S HILL" },
-                    { "a2cd1bb7-814a-4439-99c6-7832f2c00be8", "f80463f0-0d27-4fb0-a0b3-12af14cd52c3", "Franklin Heights", "FRANKLIN HEIGHTS" },
-                    { "a0c34f1f-bf78-4f28-99db-8690b6e92c7a", "93584895-6238-4135-8793-c77d0143ae9d", "Third Ward", "THIRD WARD" },
-                    { "2d1bfa7d-283a-4c78-982a-d38b50c6c072", "c7a5296d-f333-4021-a5bb-5a3077f3a76e", "Walker's Point", "WALKER'S POINT" },
-                    { "43e55311-3fe6-487c-af45-edd0b000601d", "c7e53bcc-5314-44a5-bd03-70fefe0f0d90", "Story Hill", "STORY HILL" },
-                    { "e7344a37-230f-4717-bbe1-b2638ea140f7", "bd1dbce7-6617-4da9-bd4b-580ad18d5937", "Washington Heights", "WASHINGTON HEIGHTS" },
-                    { "6120ca24-21bc-4fdc-83b2-cbaa2151c68a", "9fa2f38f-01ef-401e-a42b-230799cb6d85", "Bay View", "BAY VIEW" }
+                    { "269960c0-42f4-465e-9db5-90e773884a27", "1bd75afd-8861-4d76-8ed3-a77e0d560073", "Lower East Side", "LOWER EAST SIDE" },
+                    { "8de7e3bc-fec2-4ac3-828a-2ca15b04aa4e", "7aa3d6ec-ae3a-47d7-86a1-fb25db014368", "River West", "RIVER WEST" },
+                    { "980e1060-a8a4-40e3-b369-5858c1c0ead3", "2283d624-c715-492a-84e2-229a85e90ee9", "Downtown", "DOWNTOWN" },
+                    { "3f28c4cc-68aa-4242-9794-772d8c90ee61", "dbc6bf7d-c2b6-4a86-b682-79861c7b2d2f", "Brewer's Hill", "BREWER'S HILL" },
+                    { "8e997e19-d748-4915-b1b3-84b0b9159154", "c85d1b39-0ac4-4125-87c6-fa7946a9242f", "Franklin Heights", "FRANKLIN HEIGHTS" },
+                    { "8390c30b-b336-4b4a-9f19-411dc6b9d152", "19724f73-ad8d-49cb-9b90-40588b827370", "Third Ward", "THIRD WARD" },
+                    { "8cf4103e-6d0c-4b88-83f8-4b71abf7913d", "1e8e9a57-f73b-429b-b7ce-b54b2dcbe8ba", "Walker's Point", "WALKER'S POINT" },
+                    { "e007074a-77ca-46b9-849b-096090d6b713", "01e75075-6c4c-42d5-8fd9-355bfaa5cfbd", "Story Hill", "STORY HILL" },
+                    { "df5ab3eb-0187-4562-a24e-6b9b1f87ba12", "ee6f0dad-6fb8-49ce-98e7-8491c9878c4c", "Washington Heights", "WASHINGTON HEIGHTS" },
+                    { "43395438-63f1-4b52-aa73-89d346ec65b5", "2e8f6ef5-f1d7-4c26-8390-4d9243dba953", "Bay View", "BAY VIEW" }
                 });
 
             migrationBuilder.CreateIndex(

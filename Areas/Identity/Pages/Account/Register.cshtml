@@ -31,7 +31,7 @@
             </div>
             <div class="form-group has-success">
                 <label asp-for="Input.Role"></label>
-                <select asp-for="Input.Role" class="form-control" asp-items="@Model.Roles">Which Neighborhood Do You Live In? </select>
+                <select asp-for="Input.Role" class="form-control" asp-items="@Model.Roles"></select>
                 <span asp-validation-for="Input.Role" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-warning">Register</button>
