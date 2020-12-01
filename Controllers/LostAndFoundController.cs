@@ -51,7 +51,7 @@ namespace Capstone.Controllers
         // POST: DiscussionForum/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Message")] LostAndFound lostandfound)
+        public async Task<IActionResult> Create([Bind("Title,Message,Created")] LostAndFound lostandfound)
         {
             if (ModelState.IsValid)
             {

@@ -19,18 +19,18 @@
     <tbody>
         @foreach(var item in Model)
         {
-        <tr class="tablerow" style="border: 6px double black; border-radius: 40px 40px 40px 40px; margin: 20px; ">
+        <tr class="table-warning" style="border: 6px double black; border-radius: 40px 40px 40px 40px; margin: 20px; ">
             <td>
-                <b> Title: </b><br />
+                Title:
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                <b> Message: </b><br />
+                Message: 
                 @Html.DisplayFor(modelItem => item.Message)
                 <td> <a asp-action="Reply">Reply</a>
             </td>
             <td style="font-style: italic; font-size: 10px; ">
-                <b>Time:</b><br />
+                
                 @Html.DisplayFor(modelItem => item.Created)
             </td>
         </tr>

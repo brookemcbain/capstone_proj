@@ -147,17 +147,14 @@ namespace Capstone.Controllers
                 return View();
             }
         }
-        public async Task<IActionResult> Location(int id)
+        public ActionResult Location()
         {
-            //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //var neighbor = _.Location.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-           
-            var neighbor = await _db.Neighbors.FindAsync(id);
-            var location = _db.Location.Where(w => w.OwnerId == neighbor.Id);
 
-            if (location == null)
+            var location = _db.Location; 
+
+            if (location.Any() == false)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(CreateLocation)); 
             }
 
             return View(location);
@@ -173,22 +170,22 @@ namespace Capstone.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateLocation([Bind("Id,Address, City, State, ZipCode, HourlyRate, CoveredSpot, Notes")] Location location)
+        public async Task<IActionResult> CreateLocation([Bind("FirstName, LastName, Address, City, State, ZipCode")] Location location)
         {
             if (ModelState.IsValid)
             {
-                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var neighbor = _db.Neighbors.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+                //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                //var neighbor = _db.Neighbors.Where(c => c.IdentityUserId == userId).SingleOrDefault();
 
                 location = await _geocodingService.AttachLatAndLong(location);
 
-                //contractor.SpotID = parkingSpot.ID;
-                location.OwnerId = neighbor.Id;
+                
+                //location.OwnerId = neighbor.Id;
                 _db.Location.Add(location);
                 await _db.SaveChangesAsync();
                 return RedirectToAction(nameof(Location));
             }
-            //ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", contractor.IdentityUserId);
+     
             return View(location);
         }
 

@@ -14,7 +14,7 @@
                 </div>
             </li>*@
         <li class="btn-group">
-            <button style="color: white;" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button style="color: white;" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Resources
             </button>
             <div class="dropdown-menu">
@@ -30,14 +30,14 @@
                 Where are your neighbors?
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" asp-area="" asp-controller="Location" asp-action="Index">Location</a>
-                <a class="dropdown-item" asp-area="" asp-controller="Location" asp-action="Create">Get On The Map</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Neighbor" asp-action="Location">Location</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Neighbor" asp-action="CreateLocation">Get On The Map</a>
                 @*<div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Separated link</a>*@
             </div>
         </li>
         <li class="btn-group">
-            <button style="color: white;" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button style="color: white;" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Contact Us
             </button>
             <div class="dropdown-menu">
@@ -49,17 +49,18 @@
             </div>
         </li>
         <li class="btn-group">
-            <button style="color: white;" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button style="color: white;" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Hello @User.Identity.Name!
             </button>
             <div class="dropdown-menu">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Neighbor" asp-action="Edit">Edit Your Information</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Neighbor" asp-action="Index">Account Information</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Neighbor" asp-action="Edit">Edit Account Information</a>
                 @*<div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>*@
+        <a class="dropdown-item" href="#">Separated link</a>*@
             </div>
         </li>
 
-        <li class="btn btn-success ">
+        <li class="btn btn-outline-primary btn-group-sm">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>

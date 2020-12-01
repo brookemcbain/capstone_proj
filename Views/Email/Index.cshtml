@@ -1,5 +1,7 @@
 ﻿@model  Email
-
+<title>Contact Us</title>
+<p>Questions, Concerns, Comments? </p>
+<p>Feel free to contact us at <b>COMMUNITYCAPSTONEPROJECT@GMAIL.COM</b></p>
 <div class="card">
     <div class="card-body">
         <form asp-asp-controller="Email" asp-action="SendMail" type="Post">
@@ -19,7 +21,7 @@
                 <textarea class="form-control" asp-for="Message"></textarea>
                 <span asp-validation-for="Subject" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Send</button>
+            <button type="submit" class="btn btn-info">Send</button>
         </form>
     </div>
 </div>
