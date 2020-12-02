@@ -3,44 +3,36 @@
 *@
 @{
 }
+<style>
+    .heading{
+        text-shadow: 4px 5px 4px yellow; 
+        font-size: 100px; 
+        text-align: center;
+        color: seagreen;  
+    }
+    .textunderheading{
+        text-shadow: 4px 4px 4px seagreen; 
+        color: darkslategrey; 
+        text-align: center; 
+         
+    }
+</style>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width" />
     <title>Index</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="css/nav.css">
+    
 </head>
 <body>
     <div class="alert alert-dismissible alert-warning">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <h4 class="alert-heading">CLICK HERE to view a Community Alert Message!</h4>
+        <h4 class="alert-heading">Community Alert Message!</h4>
         <p class="mb-0">Hello! Welcome to the Bay View Community. Take a look around and feel free to click on the Contact Us page in the navigation bar if you have any questions! <a href="#" class="alert-link"></a>.</p>
     </div>
-    @*<button>Show Alerts</button>
-        <div class="alert hide">
-            <span class="fas fa-exlamation-circle"></span>
-            <span class="msg">Hello! COMMUNITY ALERT MESSAGE: Have a great day! </span>
-            <span class="close-btn">
-                <span class="fas fa-times"></span>
-            </span>
-        </div>
+    <p class="heading">COMMUNITY</p>
+    <p class="textunderheading">Stay up to date in your neighborhood!</p>
 
-        <script>
-            $('button').click(function () {
-                $('.alert').removeClass("hide");
-                $('.alert').addClass("show");
-                $('.alert').addClass("showAlert");
-                setTimeout(function () {
-                    $('.alert').addClass("hide");
-                    $('.alert').removeClass("show");
-                }, 20000); //hide alert automatically after 5 seconds
-            });
-            $('.close-btn').click(function () {
-                $('.alert').addClass("hide");
-                $('.alert').removeClass("show");
-            });
-        </script>*@
 
 </body>
 

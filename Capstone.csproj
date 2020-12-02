@@ -6,8 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\lib\bootstrap\dist\css - Copy\boostrap.css" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css - Copy\bootstrap.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\css\Images\community.jpg" />
     <None Include="wwwroot\css\Images\Milwaukee.jpg" />
+    <None Include="wwwroot\lib\bootstrap\dist\css - Copy\boostrap.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css - Copy\bootstrap.min.css" />
     <None Include="wwwroot\lib\bootstrap\dist\css\boostrap.css" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
   </ItemGroup>
