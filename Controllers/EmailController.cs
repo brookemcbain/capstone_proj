@@ -33,5 +33,9 @@ namespace Capstone.Controllers
         {
             return View(); 
         }
+        public ActionResult Details()
+        {
+            return View(); 
+        }
     }
 }

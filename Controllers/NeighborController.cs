@@ -100,13 +100,28 @@ namespace Capstone.Controllers
         }
 
         // GET: Neighbor/Edit/5
+        //public async Task<IActionResult> Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var contractor = await _db.Neighbors.FindAsync(id);
+        //    if (contractor == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    ViewData["IdentityUserId"] = new SelectList(_db.Users, "Id", "Id", contractor.IdentityUserId);
+        //    return View(contractor);
+        //}
         public ActionResult Edit(int id)
         {
             Neighbor editNeighbor = _db.Neighbors.Find(id);
             return View(editNeighbor);
         }
 
-        // POST: Neighbor/Edit/5
+        // POST: Customer/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Neighbor neighbor)
@@ -122,6 +137,50 @@ namespace Capstone.Controllers
                 return View();
             }
         }
+
+        // POST: Contractors/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Address,City,State,ZipCode,IdentityUserId,SpotID")] Neighbor neighbor)
+        //{
+        //    if (id != neighbor.Id)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        _db.Update(neighbor);
+        //        await _db.SaveChangesAsync();
+
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    ViewData["IdentityUserId"] = new SelectList(_db.Users, "Id", "Id", neighbor.IdentityUserId);
+        //    return View(neighbor);
+        //}
+        ////public ActionResult Edit(int id)
+        ////{
+        ////    Neighbor editNeighbor = _db.Neighbors.Find(id);
+        ////    return View(editNeighbor);
+        ////}
+
+        //// POST: Neighbor/Edit/5
+
+        ////public ActionResult Edit(Neighbor neighbor)
+        ////{
+        ////    try
+        ////    {
+        ////        _db.Neighbors.Update(neighbor);
+        ////        _db.SaveChanges();
+        ////        return RedirectToAction(nameof(Index));
+        ////    }
+        ////    catch
+        ////    {
+        ////        return View();
+        ////    }
+        ////}
 
 
         // GET: Neighbor/Delete/5

@@ -21,8 +21,9 @@
                 <a class="dropdown-item" asp-area="" asp-controller="Forum" asp-action="Index">Neighborhood Watch</a>
                 <a class="dropdown-item" asp-area="" asp-controller="LostAndFound" asp-action="Index">Lost And Found</a>
                 <a class="dropdown-item" asp-area="" asp-controller="LostAndFound" asp-action="EmergencyResources">Emergency Resources</a>
+                <a class="dropdown-item" asp-area="" asp-controller="LostAndFound" asp-action="Events">Events</a>
                 @*<div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>*@
+        <a class="dropdown-item" href="#">Separated link</a>*@
             </div>
         </li>
         <li class="btn-group">
@@ -42,21 +43,15 @@
             </button>
             <div class="dropdown-menu">
                 <a class="dropdown-item" asp-area="" asp-controller="Email" asp-action="Index">Email Us</a>
-                <a class="dropdown-item" asp-area="" asp-controller="Email" asp-action="Create">Other Contact Information</a>
-                <a class="dropdown-item" asp-area="" asp-controller="Email" asp-action="About"></a>"
+                <a class="dropdown-item" asp-area="" asp-controller="Email" asp-action="Details">Other Contact Information</a>
                 @*<div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Separated link</a>*@
             </div>
         </li>
         <li class="btn-group">
-            <button style="color: white;" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button style="color: white;" type="button" class="btn btn-warning" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Hello @User.Identity.Name!
             </button>
-            <div class="dropdown-menu">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Neighbor" asp-action="Index">Account Information</a>
-                <a class="nav-link text-dark" asp-area="" asp-controller="Neighbor" asp-action="Edit">Edit Account Information</a>
-               
-            </div>
         </li>
 
         <li class="btn btn-link">

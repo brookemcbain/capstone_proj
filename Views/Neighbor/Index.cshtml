@@ -2,22 +2,76 @@
 
 
 @{
-    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
+<link href="~/css/nav.css" type="text/css" />
+<style>
+   
+    .heading1 {
+        text-shadow: 4px 5px 4px red;
+        font-size: 100px;
+        text-align: center;
+        
+    }
+    .heading2 {
+        text-shadow: 4px 5px 4px orange;
+        font-size: 100px;
+        text-align: center;
+    }
+    .heading3 {
+        text-shadow: 4px 5px 4px yellow;
+        font-size: 100px;
+        text-align: center;
+    }
+    .heading4 {
+        text-shadow: 4px 5px 4px green;
+        font-size: 100px;
+        text-align: center;
+    }
+    .heading5 {
+        text-shadow: 4px 5px 4px blue;
+        font-size: 100px;
+        text-align: center;
+    }
+    .heading6 {
+        text-shadow: 4px 5px 4px blue;
+        font-size: 100px;
+        text-align: center;
+    }
+    .textunderheading {
+        text-shadow: 1px 1px 1px blue;
+        font-weight: bold; 
+        color: black;
+        font-size: 20px; 
+        text-align: center;
+    }
+</style>
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width" />
     <title>Index</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+   
 </head>
 <body>
-    
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4 class="alert-heading">Community Alert Message!</h4>
+        <p class="mb-0">Hello! Welcome to the Bay View Community. Take a look around and feel free to click on the Contact Us page in the navigation bar if you have any questions! <a href="#" class="alert-link"></a>.</p>
+    </div>
+    <p>
+        <span class="heading1" style="color: black;">C</span>
+        <span class="heading2" style="color: black;">O</span>
+        <span class="heading3" style="color: black;">M</span>
+        <span class="heading4" style="color: black;">M</span>
+        <span class="heading5" style="color: black;">U</span>
+        <span class="heading6" style="color: black;">N</span>
+        <span class="heading1" style="color: black;">I</span>
+        <span class="heading2" style="color: black;">T</span>
+        <span class="heading3" style="color: black;">Y</span><br />
+        
+        <span class="textunderheading">Stay up to date in your neighborhood!</span>
+        
+    </p>
+    <br />
     <div>
         <h4>Customer</h4>
         <hr />
@@ -34,12 +88,7 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.LastName)
             </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EmailAddress)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EmailAddress)
-            </dd>
+
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </dt>
@@ -75,7 +124,6 @@
     </div>
     <div>
         <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-       
+
     </div>
 </body>
-</html>

@@ -66,7 +66,7 @@ namespace Capstone.ActionFilters
                 }
                 else if (_claimsPrincipal.IsInRole("Bay View"))
                 {
-                    context.Result = new RedirectToActionResult("Home", "Neighbor", null);
+                    context.Result = new RedirectToActionResult("Create", "Neighbor", null);
 
                 }
         }

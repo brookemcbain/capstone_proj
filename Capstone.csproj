@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\Images\artmuseum.jpg" />
+    <None Include="wwwroot\css\Images\artmuseum2.jpg" />
     <None Include="wwwroot\css\Images\community.jpg" />
     <None Include="wwwroot\css\Images\Milwaukee.jpg" />
     <None Include="wwwroot\lib\bootstrap\dist\css - Copy\boostrap.css" />

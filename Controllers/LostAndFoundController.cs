@@ -111,6 +111,10 @@ namespace Capstone.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        public ActionResult Events()
+        {
+            return View(); 
+        }
 
     }
 }
