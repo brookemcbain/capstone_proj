@@ -93,26 +93,19 @@ namespace Capstone.Controllers
             }
         }
 
-        // GET: DiscussionForum/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+   
 
         // POST: DiscussionForum/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            var post = await _db.Posts.FindAsync(id); 
+            _db.Posts.Remove(post);
+            await _db.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }   
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Replies([Bind("Title,Message")] Post post)

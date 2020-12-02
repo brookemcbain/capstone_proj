@@ -89,6 +89,7 @@ namespace Capstone.Data
 
                   );
         }
+        public DbSet<Capstone.Models.Forum> Forum { get; set; }
 
     }
 }

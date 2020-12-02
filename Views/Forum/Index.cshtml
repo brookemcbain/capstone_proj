@@ -2,45 +2,46 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
 
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width" />
-    
-    <title>Index</title>
-</head>
 <body>
-<table>
-    <tbody>
-        @foreach(var item in Model)
-        {
-        <tr class="table-warning" style="border: 6px double black; border-radius: 40px 40px 40px 40px; margin: 20px; ">
-            <td>
-                Title:
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                Message: 
-                @Html.DisplayFor(modelItem => item.Message)
-                <td> <a asp-action="Reply">Reply</a>
-            </td>
-            <td style="font-style: italic; font-size: 10px; ">
-                
-                @Html.DisplayFor(modelItem => item.Created)
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
-<div>
-    
-    <a asp-action="Create">Create A Post</a>
-</div>
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4 class="alert-heading"><b>Neighborhood Watch</b></h4>
+        <p class="mb-0">Please use this space to inform the Bay View Community about any crime in the area (ex: stolen packages, break-ins, car jackings). Make sure to provide as much detail as possible and leave any information to contact yourself or whomever neccessary.</p>
+    </div>
+    <table class="table table-hover">
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="table-success" @*class="tablerow" style="border: 6px double black; border-radius: 40px 40px 40px 40px; margin: 20px; "*@>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.Message)
+                    <td>
+                        <a asp-action="Delete">Delete</a>
+                        <a asp-action="Reply">Reply</a>
+                    </td>
+                    <td style="font-style: italic; font-size: 10px;">
+                        @Html.DisplayFor(modelItem => item.Created)
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <div>
+
+        <a asp-action="Create">Create A Post</a>
+    </div>
 </body>
-</html>
+
 <link rel="stylesheet" href="~/css/create.css" />

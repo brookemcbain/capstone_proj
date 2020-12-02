@@ -102,18 +102,14 @@ namespace Capstone.Controllers
         }
 
         // POST: DiscussionForum/Delete/5
-        [HttpPost]
+       [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var lostAndFound = await _db.LostAndFound.FindAsync(id); 
+            _db.LostAndFound.Remove(lostAndFound);
+            await _db.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
     }
